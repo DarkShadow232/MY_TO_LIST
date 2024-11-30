@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة المهام</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-section">
+                <div class="profile-image" id="profile-image"></div>
+                <div class="profile-info">
+                    <div class="profile-name" id="profile-name"></div>
+                    <div class="profile-email" id="profile-email"></div>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+            <h1>قائمة المهام</h1>
+            <form id="task-form">
+                <textarea id="task-input" placeholder="أضف مهمة أو اكتب وصفاً لما تريد عمله..." required></textarea>
+                <div class="form-buttons">
+                    <button type="submit" class="add-btn">
+                        <i class="fas fa-plus"></i>
+                        إضافة مهمة
+                    </button>
+                    <button type="button" id="generate-tasks-btn" class="generate-btn">
+                        <i class="fas fa-magic"></i>
+                        توليد مهام ذكية
+                    </button>
+                </div>
+            </form>
+        </header>
+        
+        <div class="tasks-container">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="active">النشطة</button>
+                <button class="filter-btn" data-filter="completed">المكتملة</button>
+            </div>
+            
+            <div id="tasks-groups"></div>
+            
+            <div class="tasks-info">
+                <span id="tasks-count">0 مهام متبقية</span>
+                <button id="clear-completed">حذف المكتملة</button>
+            </div>
+        </div>
+
+        <!-- نافذة منبثقة للمهام المولدة -->
+        <div id="ai-modal" class="modal">
+            <div class="modal-content">
+                <h2>المهام المقترحة</h2>
+                <div id="generated-tasks"></div>
+                <div class="modal-buttons">
+                    <button id="add-selected-tasks" class="primary-btn">إضافة المهام المحددة</button>
+                    <button id="close-modal" class="secondary-btn">إغلاق</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+    <script src="ai-service.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
